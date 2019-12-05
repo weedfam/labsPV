@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ESTeCar.Models.Carro>
+
+@{
+    ViewData["Title"] = "Carros";
+}
+
+<h1>Carros</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="OrderByModelo">
+                    @Html.DisplayNameFor(model => model.Modelo)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroDePortas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoDeCaixa)
+            </th>
+            <th>
+                <a asp-action="OrderByMarca">
+                    @Html.DisplayNameFor(model => model.Marca)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroDePortas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoDeCaixa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca.Designacao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CarroId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CarroId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CarroId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
