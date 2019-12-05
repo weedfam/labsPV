@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ESTaPapelaria.Models.Artigo>
+
+@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Shared/_ESTLayout.cshtml";
+}
+
+<h1>Artigos</h1>
+
+<form asp-controller="Artigos" asp-action="Listar" method="post">
+    <p>
+        Nome: <input type="text" name="filtro">
+        <input type="submit" value="Filtrar" />
+    </p>
+</form>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desconto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmPromocao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Desconto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmPromocao)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Footer
+{
+    <span>
+        <b>
+            Veja as nossas @Html.ActionLink("promoções", "Promocoes", "Artigos")!
+        </b>
+    </span>
+}
