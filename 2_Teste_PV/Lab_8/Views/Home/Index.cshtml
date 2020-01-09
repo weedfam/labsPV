@@ -1,0 +1,16 @@
+﻿@using EstCarII.Services
+@inject IAlugueresHoje AlugueresHoje
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Stand Est-e-Car</h1>
+
+<p>Alugamos Carros</p>
+
+<h3> Só Hoje </h3>
+
+<p>
+    <b>@AlugueresHoje.AlgueresHoje.Count()</b> Carro(s) Alugado(s)!
+</p>
